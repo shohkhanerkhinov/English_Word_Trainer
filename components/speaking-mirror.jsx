@@ -7,18 +7,127 @@ import { Badge } from "@/components/ui/badge"
 import { Mic, MicOff, Volume2, CheckCircle2, XCircle, AlertCircle } from "lucide-react"
 
 const PRACTICE_PHRASES = [
+  // Easy (1-35) - Basic greetings and simple sentences
   { id: 1, text: "How are you?", difficulty: "easy" },
   { id: 2, text: "Good morning, everyone!", difficulty: "easy" },
   { id: 3, text: "Thank you very much.", difficulty: "easy" },
   { id: 4, text: "I am learning English.", difficulty: "easy" },
   { id: 5, text: "What is your name?", difficulty: "easy" },
-  { id: 6, text: "The weather is beautiful today.", difficulty: "medium" },
-  { id: 7, text: "I would like to improve my pronunciation.", difficulty: "medium" },
-  { id: 8, text: "Education is the key to success.", difficulty: "medium" },
-  { id: 9, text: "Technology has changed our lives significantly.", difficulty: "medium" },
-  { id: 10, text: "Communication skills are essential in the modern world.", difficulty: "hard" },
-  { id: 11, text: "The implementation of sustainable development requires collaboration.", difficulty: "hard" },
-  { id: 12, text: "Unprecedented challenges demand innovative solutions.", difficulty: "hard" },
+  { id: 6, text: "Nice to meet you.", difficulty: "easy" },
+  { id: 7, text: "Have a great day!", difficulty: "easy" },
+  { id: 8, text: "See you later.", difficulty: "easy" },
+  { id: 9, text: "I am fine, thank you.", difficulty: "easy" },
+  { id: 10, text: "Where are you from?", difficulty: "easy" },
+  { id: 11, text: "I live in the city.", difficulty: "easy" },
+  { id: 12, text: "This is my book.", difficulty: "easy" },
+  { id: 13, text: "I like coffee.", difficulty: "easy" },
+  { id: 14, text: "The sky is blue.", difficulty: "easy" },
+  { id: 15, text: "I am a student.", difficulty: "easy" },
+  { id: 16, text: "Can you help me?", difficulty: "easy" },
+  { id: 17, text: "I need water.", difficulty: "easy" },
+  { id: 18, text: "What time is it?", difficulty: "easy" },
+  { id: 19, text: "I am hungry.", difficulty: "easy" },
+  { id: 20, text: "The weather is nice.", difficulty: "easy" },
+  { id: 21, text: "I love music.", difficulty: "easy" },
+  { id: 22, text: "This is delicious.", difficulty: "easy" },
+  { id: 23, text: "I am happy today.", difficulty: "easy" },
+  { id: 24, text: "Please speak slowly.", difficulty: "easy" },
+  { id: 25, text: "I understand now.", difficulty: "easy" },
+  { id: 26, text: "Excuse me, please.", difficulty: "easy" },
+  { id: 27, text: "You are welcome.", difficulty: "easy" },
+  { id: 28, text: "I am sorry.", difficulty: "easy" },
+  { id: 29, text: "That is correct.", difficulty: "easy" },
+  { id: 30, text: "I agree with you.", difficulty: "easy" },
+  { id: 31, text: "How much is this?", difficulty: "easy" },
+  { id: 32, text: "I want to learn.", difficulty: "easy" },
+  { id: 33, text: "This is important.", difficulty: "easy" },
+  { id: 34, text: "I am ready now.", difficulty: "easy" },
+  { id: 35, text: "Let us begin.", difficulty: "easy" },
+
+  // Medium (36-70) - Everyday conversations and descriptions
+  { id: 36, text: "The weather is beautiful today.", difficulty: "medium" },
+  { id: 37, text: "I would like to improve my pronunciation.", difficulty: "medium" },
+  { id: 38, text: "Education is the key to success.", difficulty: "medium" },
+  { id: 39, text: "Technology has changed our lives significantly.", difficulty: "medium" },
+  { id: 40, text: "I enjoy reading books in my free time.", difficulty: "medium" },
+  { id: 41, text: "Could you please repeat that sentence?", difficulty: "medium" },
+  { id: 42, text: "I am planning to visit the museum tomorrow.", difficulty: "medium" },
+  { id: 43, text: "Learning a new language requires dedication and practice.", difficulty: "medium" },
+  { id: 44, text: "The presentation was very informative and engaging.", difficulty: "medium" },
+  { id: 45, text: "I believe teamwork is essential for achieving goals.", difficulty: "medium" },
+  { id: 46, text: "The restaurant serves authentic international cuisine.", difficulty: "medium" },
+  { id: 47, text: "I am interested in studying computer science.", difficulty: "medium" },
+  { id: 48, text: "Regular exercise contributes to better health.", difficulty: "medium" },
+  { id: 49, text: "The conference will take place next month.", difficulty: "medium" },
+  { id: 50, text: "I appreciate your help with this project.", difficulty: "medium" },
+  { id: 51, text: "The library has an extensive collection of books.", difficulty: "medium" },
+  { id: 52, text: "I prefer working in a quiet environment.", difficulty: "medium" },
+  { id: 53, text: "The movie was entertaining and thought-provoking.", difficulty: "medium" },
+  { id: 54, text: "I am looking forward to the upcoming vacation.", difficulty: "medium" },
+  { id: 55, text: "The professor explained the concept very clearly.", difficulty: "medium" },
+  { id: 56, text: "I need to submit the assignment by Friday.", difficulty: "medium" },
+  { id: 57, text: "The city offers many cultural and recreational activities.", difficulty: "medium" },
+  { id: 58, text: "I am trying to develop better time management skills.", difficulty: "medium" },
+  { id: 59, text: "The workshop provided valuable insights and techniques.", difficulty: "medium" },
+  { id: 60, text: "I enjoy exploring different cuisines and cultures.", difficulty: "medium" },
+  { id: 61, text: "The company is committed to environmental sustainability.", difficulty: "medium" },
+  { id: 62, text: "I find mathematics both challenging and rewarding.", difficulty: "medium" },
+  { id: 63, text: "The exhibition showcases contemporary art from various artists.", difficulty: "medium" },
+  { id: 64, text: "I am working on improving my communication skills.", difficulty: "medium" },
+  { id: 65, text: "The seminar addressed important issues in modern society.", difficulty: "medium" },
+  { id: 66, text: "I believe continuous learning is crucial for personal growth.", difficulty: "medium" },
+  { id: 67, text: "The hotel provides excellent service and comfortable accommodations.", difficulty: "medium" },
+  { id: 68, text: "I am passionate about protecting the environment.", difficulty: "medium" },
+  { id: 69, text: "The research findings have significant implications for the field.", difficulty: "medium" },
+  { id: 70, text: "I value honesty and integrity in all relationships.", difficulty: "medium" },
+
+  // Hard (71-100) - Academic and professional language
+  { id: 71, text: "Communication skills are essential in the modern world.", difficulty: "hard" },
+  { id: 72, text: "The implementation of sustainable development requires collaboration.", difficulty: "hard" },
+  { id: 73, text: "Unprecedented challenges demand innovative solutions.", difficulty: "hard" },
+  { id: 74, text: "The interdisciplinary approach facilitates comprehensive understanding.", difficulty: "hard" },
+  { id: 75, text: "Globalization has profoundly influenced economic and cultural dynamics.", difficulty: "hard" },
+  { id: 76, text: "The methodology employed in this study ensures reliable results.", difficulty: "hard" },
+  { id: 77, text: "Critical thinking skills are fundamental to academic excellence.", difficulty: "hard" },
+  { id: 78, text: "The paradigm shift necessitates reevaluation of traditional assumptions.", difficulty: "hard" },
+  { id: 79, text: "Technological advancement has revolutionized information accessibility.", difficulty: "hard" },
+  { id: 80, text: "The correlation between variables demonstrates statistical significance.", difficulty: "hard" },
+  { id: 81, text: "Ethical considerations are paramount in scientific research.", difficulty: "hard" },
+  { id: 82, text: "The comprehensive analysis reveals multifaceted implications.", difficulty: "hard" },
+  { id: 83, text: "Socioeconomic factors significantly influence educational outcomes.", difficulty: "hard" },
+  { id: 84, text: "The theoretical framework provides a foundation for empirical investigation.", difficulty: "hard" },
+  {
+    id: 85,
+    text: "Interdependence among nations characterizes contemporary international relations.",
+    difficulty: "hard",
+  },
+  { id: 86, text: "The synthesis of diverse perspectives enriches intellectual discourse.", difficulty: "hard" },
+  { id: 87, text: "Quantitative and qualitative methodologies complement each other effectively.", difficulty: "hard" },
+  { id: 88, text: "The phenomenon exhibits remarkable complexity and variability.", difficulty: "hard" },
+  { id: 89, text: "Sustainable practices are imperative for environmental preservation.", difficulty: "hard" },
+  { id: 90, text: "The hypothesis was substantiated through rigorous experimentation.", difficulty: "hard" },
+  { id: 91, text: "Cultural diversity enhances creativity and innovation in organizations.", difficulty: "hard" },
+  {
+    id: 92,
+    text: "The implications of artificial intelligence extend beyond technological domains.",
+    difficulty: "hard",
+  },
+  { id: 93, text: "Collaborative efforts are indispensable for addressing global challenges.", difficulty: "hard" },
+  { id: 94, text: "The epistemological foundations of knowledge warrant careful examination.", difficulty: "hard" },
+  { id: 95, text: "Demographic transitions have profound societal and economic consequences.", difficulty: "hard" },
+  { id: 96, text: "The integration of technology in education transforms pedagogical approaches.", difficulty: "hard" },
+  {
+    id: 97,
+    text: "Philosophical inquiry illuminates fundamental questions about human existence.",
+    difficulty: "hard",
+  },
+  { id: 98, text: "The multidimensional nature of poverty requires comprehensive interventions.", difficulty: "hard" },
+  { id: 99, text: "Neuroplasticity demonstrates the brain's remarkable capacity for adaptation.", difficulty: "hard" },
+  {
+    id: 100,
+    text: "The convergence of disciplines fosters groundbreaking discoveries and innovations.",
+    difficulty: "hard",
+  },
 ]
 
 export default function SpeakingMirror() {
@@ -116,7 +225,19 @@ export default function SpeakingMirror() {
       setTranscript("")
       setResult(null)
       setIsListening(true)
-      recognition.start()
+      try {
+        recognition.stop()
+      } catch (e) {
+        // Ignore if not running
+      }
+      setTimeout(() => {
+        try {
+          recognition.start()
+        } catch (e) {
+          console.log("[v0] Recognition start error:", e)
+          setIsListening(false)
+        }
+      }, 100)
     }
   }
 
@@ -142,12 +263,18 @@ export default function SpeakingMirror() {
     setCurrentPhrase(PRACTICE_PHRASES[nextIndex])
     setTranscript("")
     setResult(null)
+    if (isListening) {
+      stopListening()
+    }
   }
 
   const selectPhrase = (phrase) => {
     setCurrentPhrase(phrase)
     setTranscript("")
     setResult(null)
+    if (isListening) {
+      stopListening()
+    }
   }
 
   if (!browserSupported) {
@@ -236,9 +363,14 @@ export default function SpeakingMirror() {
                 </div>
               )}
 
-              <Button onClick={nextPhrase} variant="outline" className="w-full bg-transparent text-sm sm:text-base">
-                Next Phrase
-              </Button>
+              <div className="w-full space-y-2">
+                <Button onClick={nextPhrase} className="w-full text-sm sm:text-base">
+                  Next Phrase →
+                </Button>
+                <p className="text-xs text-center text-muted-foreground">
+                  Practice this phrase multiple times, then click "Next Phrase" to continue
+                </p>
+              </div>
             </div>
           </Card>
         </div>
