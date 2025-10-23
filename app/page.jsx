@@ -7,10 +7,12 @@ import Statistics from "@/components/statistics"
 import GrammarChallenge from "@/components/grammar-challenge"
 import SpeakingMirror from "@/components/speaking-mirror"
 import AuthForm from "@/components/auth-form"
+import MissedDayBanner from "@/components/missed-day-banner"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { BookOpen, Trophy, BarChart3, BookText, Mic, Menu, LogOut } from "lucide-react"
 import { WORD_DATABASE } from "@/lib/word-database"
+import { requestNotificationPermission, checkMissedDays, sendMissedDayNotification } from "@/lib/notification-service"
 
 export default function Home() {
   const [currentUser, setCurrentUser] = useState(null)
@@ -21,14 +23,40 @@ export default function Home() {
   const [learnedWords, setLearnedWords] = useState([])
   const [reviewWords, setReviewWords] = useState([])
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [missedDays, setMissedDays] = useState(0)
 
   useEffect(() => {
-    const userData = localStorage.getItem("englishTrainerCurrentUser")
-    if (userData) {
-      setCurrentUser(JSON.parse(userData))
+    try {
+      const userData = localStorage.getItem("englishTrainerCurrentUser")
+      if (userData) {
+        const user = JSON.parse(userData)
+        console.log("[v0] Loaded user session:", user.email)
+        setCurrentUser(user)
+      } else {
+        console.log("[v0] No saved user session found")
+      }
+    } catch (e) {
+      console.log("[v0] Error loading user session:", e)
+      localStorage.removeItem("englishTrainerCurrentUser")
     }
     setIsLoading(false)
   }, [])
+
+  useEffect(() => {
+    if (!currentUser) return
+
+    // Request notification permission
+    requestNotificationPermission()
+
+    // Check for missed days
+    const { missedDays: missed } = checkMissedDays(currentUser.id)
+    setMissedDays(missed)
+
+    // Send notification if days were missed
+    if (missed > 0) {
+      sendMissedDayNotification(missed)
+    }
+  }, [currentUser])
 
   useEffect(() => {
     if (!currentUser) return
@@ -83,9 +111,11 @@ export default function Home() {
     setDailyWords([])
     setLearnedWords([])
     setReviewWords([])
+    setMissedDays(0)
   }
 
   const handleLogin = (user) => {
+    console.log("[v0] handleLogin called with user:", user.email)
     setCurrentUser(user)
   }
 
@@ -256,6 +286,8 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 md:py-8">
+        {missedDays > 0 && <MissedDayBanner missedDays={missedDays} onDismiss={() => setMissedDays(0)} />}
+
         {mode === "learn" && (
           <div className="max-w-4xl mx-auto">
             <div className="mb-6 sm:mb-8">
